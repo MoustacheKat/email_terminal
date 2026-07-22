@@ -25,6 +25,17 @@
             "System successfully corrupted!"
         ]
     },
+  "warning.exe": {
+    "help": "Displays a warning message",
+    "clear": true,
+    "delayed": 1000,
+    "message": [
+      "ACCESSING MAINFRAME...",
+      "WARNING: Unauthorized access detected.",
+      "TRACE STARTED...",
+      "CONNECTION LOST."
+    ]
+  },
     "target.exe": {
         "location": ["127.0.0.1", "localhost"],
         "message": [
@@ -34,5 +45,5 @@
     },
     "artifact": {},
     "decrypt": {},
-    "identify": {}
+    "identify": {},
 }
