@@ -48,9 +48,10 @@ html, body {
 }
 body {
   font-size: 11pt;
-  font-family: Inconsolata, monospace;
-  color: white;
-  background-color: black;
+   font-family: Inconsolata, monospace;
+   color: #00ff00;
+   background-color: black;
+   text-shadow: 0 0 5px #00ff00;
 }
 #container {
   padding: .1em 1.5em 1em 1em;
@@ -84,7 +85,8 @@ body {
 }
 .prompt {
   white-space: nowrap;
-  color: #96b38a;
+  color: #00ff00;
+  text-shadow: 0 0 5px #00ff00;
   margin-right: 7px;
   display: -webkit-box;
   -webkit-box-pack: center;
