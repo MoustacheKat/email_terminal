@@ -35,6 +35,7 @@ function setHeader( msg ) {
     // Setting correct header icon and terminal name
     const promptText = "> ";
 
+
     initDateObject();
     const dateStr = `${ serverDate.day }/${ serverDate.month }/${ serverDate.year }`;
     const imgUrl = `config/network/${ serverDatabase.serverAddress }/${ serverDatabase.iconName }`;
