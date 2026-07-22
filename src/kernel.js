@@ -37,7 +37,6 @@ function setHeader( msg ) {
 
 
     initDateObject();
-    const dateStr = `${ serverDate.day }/${ serverDate.month }/${ serverDate.year }`;
     const imgUrl = `config/network/${ serverDatabase.serverAddress }/${ serverDatabase.iconName }`;
     const imgSize = serverDatabase.iconSize || 100;
     const header = `
