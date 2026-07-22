@@ -99,57 +99,35 @@ function Terminal() {
      *
      * @param {Event} e
      */
-    function processNewCommand_( e ) {
-        if ( e.keyCode === 13 && this.value && this.value.trim() ) {
-            // Save shell history but avoids duplicates:
-            if ( history_.length === 0 || history_[ history_.length - 1 ].trim() !== this.value.trim() ) {
-                history_[ history_.length ] = this.value;
-                histpos_ = history_.length;
-                saveHistoryToLocalStorage();
-            }
-            // Duplicate current input and append to output section.
-            const line = this.parentNode.parentNode.cloneNode( true );
-            line.removeAttribute( "id" );
-            line.classList.add( "line" );
-            const input = line.querySelector( "input.cmdline" );
-            input.autofocus = false;
-            input.readOnly = true;
-            output_.appendChild( line );
+   function processNewCommand_( e ) {
+       if ( e.keyCode === 13 ) {
+           e.preventDefault();
 
-            // Parsing Terminal arguments as `args`
-            let args = this.value.split( " " ).filter( ( val ) => val );
-            const cmd = args[ 0 ].toLowerCase();
-            args = args.splice( 1 ); // Remove cmd from arg list.
+           const text = this.value;
 
-            /**
-             * The kernel function is at src/softwares.js
-             *
-             * If need to know more about Promises, read the following:
-             * https://stackoverflow.com/questions/14220321/how-do-i-return-the-response-from-an-asynchronous-call
-             */
-            try {
-                kernel( cmd, args )
-                    .then( ( result ) => {
-                        output( result );
-                    } )
-                    .catch( ( error ) => {
-                        if ( error instanceof FunctionalError ) { // eslint-disable-line no-undef
-                            output( error.message );
-                        } else { // untyped = unexpected error
-                            console.exception( error );
-                            output( `kernel failure - ${ error.constructor.name }: ${ error.message }` );
-                        }
-                    } );
-            } catch ( error ) {
-                // If the user enter a empty line, it will just ignore and output a new line
-                if ( !cmd ) {
-                    output();
-                    return;
-                }
-                output( `${ cmd }: command not found` );
-            }
-        }
-    }
+
+           if ( !text.trim() ) {
+               output( "" );
+               this.value = "";
+               return;
+           }
+
+
+           if ( history_.length === 0 || history_[ history_.length - 1 ].trim() !== text.trim() ) {
+               history_.push( text );
+               histpos_ = history_.length;
+               saveHistoryToLocalStorage();
+           }
+
+
+           output( `> ${text}` );
+
+
+           this.value = "";
+
+           newLine();
+       }
+   }
 
     /**
      * Load the commands history from localStorage, or else from `initialHistory` if provided.
