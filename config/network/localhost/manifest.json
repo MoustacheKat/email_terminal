@@ -1,12 +1,12 @@
 {
     "serverAddress": "localhost",
-    "serverName": "Node Y56 Intranet",
+    "serverName": "Starveil SMP",
     "iconName": "Moon-icon.png",
-    "terminalID": "Y56",
+    "terminalID": "SVSMP",
     "defaultUser": {
         "userId": "user",
         "password": "",
-        "userName": "anonymous"
+        "userName": "███████████"
     },
     "initialHistory": {
         "user": [
