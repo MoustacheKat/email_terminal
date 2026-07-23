@@ -45,7 +45,7 @@ function setHeader( msg ) {
     <h2 style="letter-spacing: 4px">${ serverDatabase.serverName }</h2>
     <p> ██████████</p>
     ${ serverDatabase.headerExtraHTML || "" }
-    <p>STAR GAZER DATABASE</p>
+    <p>STAR RAZER DATABASE</p>
     `;
     // Clear content:
     output_.innerHTML = "";
