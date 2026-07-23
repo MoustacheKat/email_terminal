@@ -15,15 +15,22 @@ function Terminal() {
     addCmdLineListeners();
 
     function addCmdLineListeners() {
+        cmdLine_.addEventListener("input", autoResize_);
         cmdLine_.addEventListener( "keydown", historyHandler_ );
         cmdLine_.addEventListener( "keydown", processNewCommand_ );
         cmdLine_.addEventListener( "keydown", tabSuggestionHandler_ );
     }
 
     function removeCmdLineListeners() {
+        cmdLine_.removeEventListener("input", autoResize_);
         cmdLine_.removeEventListener( "keydown", historyHandler_ );
         cmdLine_.removeEventListener( "keydown", processNewCommand_ );
         cmdLine_.removeEventListener( "keydown", tabSuggestionHandler_ );
+    }
+    
+    function autoResize_() {
+    this.style.height = "auto";
+    this.style.height = this.scrollHeight + "px";
     }
 
     /**
@@ -56,6 +63,9 @@ function Terminal() {
             }
         }
         this.value = history_[ histpos_ ] ? history_[ histpos_ ] : histTemp;
+
+        this.style.height = "auto";
+        this.style.height = this.scrollHeight + "px";
         // Trick to move cursor to end of input, cf. https://stackoverflow.com/a/10576409/636849
         setTimeout( () => {
             /* eslint-disable-next-line no-multi-assign */
@@ -124,7 +134,7 @@ function Terminal() {
 
 
            this.value = "";
-
+           this.style.height = "auto";
            newLine();
        }
    }
