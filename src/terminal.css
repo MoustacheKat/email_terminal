@@ -125,26 +125,40 @@ body::after {
 
 
 .cmdline {
+    outline: none;
+    background: transparent;
+    width: 100%;
 
-  outline:none;
+    border: none;
+    resize: none;
+    overflow: hidden;
 
-  background:transparent;
+    font: inherit;
+    color: #00ff66;
+    caret-color: #00ff66;
 
-  width:100%;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    word-break: break-word;
 
-  font:inherit;
+    line-height: 1.2em;
+    min-height: 1.2em;
+    max-height: 8em;
 
-  border:none;
+    padding: 0;
+    margin: 0;
 
-  color:#00ff66;
-
-  caret-color:#00ff66;
-
-  text-shadow:
-    0 0 3px #00ff66,
-    0 0 8px #00ff66;
+    text-shadow:
+        0 0 3px #00ff66,
+        0 0 8px #00ff66;
+}
+.cmdline::-webkit-scrollbar {
+    display: none;
 }
 
+.cmdline {
+    scrollbar-width: none;
+}
 
 
 ::selection {
